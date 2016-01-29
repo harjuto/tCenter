@@ -1,0 +1,45 @@
+body{
+  font-size: 2vw !important;
+  #container{
+    display:flex;
+    flex-direction: column;
+
+    #data-display{
+      display: flex;
+      flex-direction: column;
+      #scroll-container{
+        flex:1;
+        position:relative;
+        height:50px;
+      }
+      #upper-section{
+        display: flex;
+        flex-direction: row;
+        #metro-container{
+          flex:1
+        }
+        #weather-container{
+          flex:1
+        }
+      }
+      #lower-section{
+        display: flex;
+        flex-direction: row;
+        #todo-container{
+          flex:1;
+        }
+        #shop-container{
+          flex:1;
+        }
+
+      }
+    }
+    #lower-section{
+      display: flex;
+
+    }
+  }
+  iframe{
+    border-width:0;
+  }
+}
