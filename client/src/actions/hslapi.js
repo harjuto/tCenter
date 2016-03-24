@@ -12,11 +12,11 @@ export function requestRoutes(){
     }
 }
 
-export function fetchRoutes(){
+export function fetchRoutes(url){
     return dispatch => {
         dispatch(requestRoutes());
 
-        return fetch('http://api.reittiopas.fi/hsl/prod/?user=infoscreen&pass=Sb1vtu&request=stop&code=4285&dep_limit=5')
+        return fetch(url)
             .then(response => response.json())
             .then(json =>
                 dispatch(receiveRoutes(json))
@@ -54,6 +54,7 @@ export function fetchMetro(){
 export function receiveMetro(metro){
     return {
         type: RECEIVE_METRO,
-        metro: metro[0]
+        data: metro[0]
     }
 }
+//Mine 'http://api.reittiopas.fi/hsl/prod/?user=infoscreen&pass=Sb1vtu&request=stop&code=4285&dep_limit=5'

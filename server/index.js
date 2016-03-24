@@ -1,20 +1,11 @@
 const Hapi = require('hapi');
 const Inert = require('inert');
+const db = require('./src/db');
 const server = new Hapi.Server();
-
 server.connection({port:8080});
 server.register(Inert, () => {});
-
-var todos = ['Im the first todo'];
-
-const io = require('socket.io')(server.listener);
-
-io.on('connection', function (socket) {
-	socket.emit('initial todos', todos);
-	socket.on('new todo', (data) => {
-		socket.broadcast.emit(data);
-	})
-});
+const socket = require('./src/socket').init(server);
+const TodoRoutes = require('./src/routes/todos');
 
 server.route({
 	method: 'GET',
@@ -28,17 +19,7 @@ server.route({
 	}
 });
 
-server.route({
-	method: 'POST',
-	path: '/api/addShoppingItem',
-	handler: (req, reply) => {
-		var todo = req.payload.text
-		todos.push(todo);
-		io.sockets.emit('new todo', todo);
-		reply('ok')
-	}
-});
-
+server.route(TodoRoutes);
 
 server.start( () => {
 	console.log('Server running at:', server.info.uri);

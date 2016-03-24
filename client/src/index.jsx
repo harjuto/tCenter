@@ -1,5 +1,5 @@
+import 'file?name=[name].[ext]!./index.html';
 import './style/main.less';
-import 'bootstrap-webpack';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

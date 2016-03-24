@@ -1,16 +1,19 @@
 import { RECEIVE_WEATHER } from '../actions/weatherapi';
 import { RECEIVE_ROUTES, RECEIVE_METRO } from '../actions/hslapi';
+import { HYDRATE } from '../actions/common';
 
 const initialState = {
-    metro:undefined,
+    timetable: {
+        enabled: true,
+        loaded: false,
+        departures: undefined,
+        url: undefined,
+        stops: []
+    },
     weather:{
         weather:[],
         main: {}
-    },
-    events:{
-        today: ['Go to wine tasting', 'Visit WWWeeklies'],
-        tomorrow: ['Netflix and chill']
-    },
+    }
 };
 
 
@@ -27,7 +30,14 @@ export default (state = initialState, action) => {
             });
         case RECEIVE_METRO:
             return Object.assign({}, state, {
-                'metro': action.metro
+              timetable: Object.assign({}, state.timetable, {
+                loaded: true,
+                departures: action.data.departures
+                })
+            });
+        case HYDRATE:
+            return Object.assign({}, state, {
+                timetable: action.data.timetable
             });
         default:
             return state;

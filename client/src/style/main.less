@@ -1,6 +1,10 @@
+@import 'mixins';
+
 body{
+  color: @color-text-default;
   font-size: 2vw !important;
   #container{
+    overflow:hidden;
     display:flex;
     flex-direction: column;
 
@@ -25,10 +29,7 @@ body{
       #lower-section{
         display: flex;
         flex-direction: row;
-        #todo-container{
-          flex:1;
-        }
-        #shop-container{
+        #task-container{
           flex:1;
         }
 
@@ -40,6 +41,9 @@ body{
     }
   }
   iframe{
-    border-width:0;
+    width: 100%;
+    height: 800px;
+    frameborder: 0;
+    scrolling: no;
   }
 }

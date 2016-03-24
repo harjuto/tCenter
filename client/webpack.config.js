@@ -1,5 +1,4 @@
 var path = require('path');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -53,19 +52,11 @@ module.exports = {
 
         // Parse host and port from env so this is easy to customize.
         //host: process.env.HOST,
-        //port: process.env.PORT
+        port: "8080"
     },
     plugins: [
-        new HtmlwebpackPlugin({
-            title: 'Infoscreen',
-            appMountId: 'app',
-            template: './src/index.tpl.html'
-        }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
+
         //new webpack.optimize.UglifyJsPlugin({minimize: true})
     ]
 };
