@@ -27,6 +27,14 @@ const gridConfig = {
           widget: 'weather'
         }
       ]
+    },
+    {
+      cells: [
+        {
+          size: 1,
+          widget: 'quote'
+        }
+      ]
     }
   ]
 };

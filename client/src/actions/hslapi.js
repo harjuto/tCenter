@@ -1,4 +1,3 @@
-import Fetch from 'whatwg-fetch'
 
 export const REQUEST_ROUTES = 'REQUEST_ROUTES';
 export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';

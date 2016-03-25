@@ -6,11 +6,17 @@ export default class Weather extends React.Component{
 
     componentDidMount() {
       this.props.dispatch(fetchWeather());
+      this.interval = setInterval(() => {
+        this.props.dispatch(fetchWeather())
+      }, 1000 * 60 * 5);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.interval);
     }
 
     render(){
       let weather = this.props.state.weather;
-      console.info(weather)
         return (
             <div id="weather-container">
               <div className="weather-display">
@@ -27,8 +33,8 @@ export default class Weather extends React.Component{
     }
 
     renderDescriptions(weather){
-        return weather.map((info) =>
-          <div className="description">
+        return weather.map((info, index) =>
+          <div key={index} className="description">
             <img src={"http://openweathermap.org/img/w/" + info.icon + ".png"} />
             {info.description}
           </div>

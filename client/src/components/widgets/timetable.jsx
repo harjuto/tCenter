@@ -5,7 +5,14 @@ import {fetchMetro} from '../../actions/hslapi';
 export default class Metro extends React.Component {
 
     componentDidMount() {
-      this.props.dispatch(fetchMetro())
+      this.props.dispatch(fetchMetro());
+      this.interval = setInterval(() => {
+        this.props.dispatch(fetchMetro())
+      }, 1000 * 60);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.interval);
     }
 
     render() {

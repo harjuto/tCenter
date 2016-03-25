@@ -1,5 +1,8 @@
 import { RECEIVE_WEATHER } from '../actions/weatherapi';
-import { RECEIVE_ROUTES, RECEIVE_METRO } from '../actions/hslapi';
+import {
+  RECEIVE_ROUTES,
+  RECEIVE_METRO } from '../actions/hslapi';
+import { RECEIVE_QUOTE } from '../actions/quotes';
 import { HYDRATE } from '../actions/common';
 
 const initialState = {
@@ -13,6 +16,9 @@ const initialState = {
     weather:{
         weather:[],
         main: {}
+    },
+    quote: {
+
     }
 };
 
@@ -34,6 +40,10 @@ export default (state = initialState, action) => {
                 loaded: true,
                 departures: action.data.departures
                 })
+            });
+        case RECEIVE_QUOTE:
+            return Object.assign({}, state, {
+               quote: action.quote
             });
         case HYDRATE:
             return Object.assign({}, state, {
