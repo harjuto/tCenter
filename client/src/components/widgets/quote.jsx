@@ -9,7 +9,7 @@ export default class Quote extends React.Component {
     this.props.dispatch(fetchQuote());
     this.interval = setInterval( () => {
       this.props.dispatch(fetchQuote());
-    }, 1000 * 60 * 60 * 3)
+    }, 1000 * 60)
   }
 
   componentWillUnmount() {
@@ -18,21 +18,12 @@ export default class Quote extends React.Component {
 
   render() {
     const quote = this.props.state.quote;
-    console.info(quote);
     return (
       <div className="quote-container">
-        {this.renderQuoteImage(quote[0])}
+        {quote.quote}
       </div>
     )
   }
 
 
-  renderQuoteImage(quote) {
-    if(quote) {
-      return <img src={quote.media}/>
-    } else {
-
-    }
-
-  }
 }

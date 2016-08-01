@@ -3,7 +3,7 @@ export const RECEIVE_QUOTE = "RECEIVE_QUOTE";
 
 export function fetchQuote() {
   return dispatch => {
-    var request = new Request("https://healthruwords.p.mashape.com/v1/quotes/?size=medium", {
+    var request = new Request("https://andruxnet-random-famous-quotes.p.mashape.com/", {
       headers: new Headers({
         "X-Mashape-Key": "J6IEiK2ifLmshBdIm4wsc32OGbLcp1F43d3jsn7foeNA4PN4Ak",
         "Accept": "application/json"
