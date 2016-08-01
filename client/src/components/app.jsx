@@ -14,6 +14,7 @@ class App extends React.Component{
               <div id="grid">
                 <Grid />
               </div>
+              <button className="reload-button">Reload</button>
             </div>
         )
     }
