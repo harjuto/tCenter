@@ -8,7 +8,7 @@ import (
 func main() {
 
 
-	http.HandleFunc("/image", func (res http.ResponseWriter, req http.Request) {
+	http.Handle("/image", func (res http.ResponseWriter, req http.Request) {
 		log.Printf("Hello world")
 	})
 
